@@ -18,6 +18,24 @@ private int sum() {
 		ensureNoNegativeNumbers();
 		return getNumbers().sum();
 	}
+private void ensureNoNegativeNumbers() {
+		String negativeNumberSequence = getNumbers().filter(n -> n < 0)
+				.mapToObj(Integer::toString)
+				.collect(Collectors.joining(","));
+		if (!negativeNumberSequence.isEmpty()) {
+			throw new IllegalArgumentException("negatives not allowed: " + negativeNumberSequence);
+		}
+	}
+
+	private IntStream getNumbers() {
+		if (numbers.isEmpty()) {
+			return IntStream.empty();
+		} else {
+			return Stream.of(numbers.split(delimiter))
+					.mapToInt(Integer::parseInt)
+					.map(n -> n % 1000);
+		}
+	}
 
 
 }

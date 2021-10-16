@@ -23,5 +23,14 @@ class StringCalculatorShould {
 		assertEquals(StringCalculator.add("1,2"), 3);
 			
 		}
+		@Test
+		public void string_sum_Of_ThreeNumbers_Seperated_ByComma() {
+			assertEquals(StringCalculator.add("1,2,3"), 6);
+		}
+
+		@Test
+		public void Stringsums_Numbers_Delimited_ByNewline() {
+			assertEquals(StringCalculator.add("1\n2"), 3);
+		}
 
 }
